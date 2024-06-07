@@ -25,7 +25,7 @@ public class EmailQueue {
     @Temporal(TemporalType.DATE)
     private Date sendDate;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private EmailStatus status;
 
 }

@@ -19,7 +19,7 @@ public class Student {
     @JoinColumn(name = "class_id")
     private Class classId;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private StudentStatus status;
 
 }

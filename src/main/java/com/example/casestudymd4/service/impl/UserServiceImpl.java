@@ -21,7 +21,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
+        User user = findByUsername(username);
+//                userRepository.findByUsername(username).get();
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
@@ -50,7 +51,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+//        return null;
+        return userRepository.findByUsername(username).get();
     }
 
     @Override

@@ -45,7 +45,7 @@ public class User {
     private String identity;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
 
     private boolean enabled = true;
 
