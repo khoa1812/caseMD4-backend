@@ -78,12 +78,10 @@ CREATE TABLE EmailQueue (
 
 
 
--- Tạo tài khoản:
 INSERT INTO Users (email, password, phone_number, full_name, date_of_birth, address, identity, role)
 VALUES ('admin@gmail.com', '123', '0123456789', 'Nguyen Admin', '2001-01-01', 'Address', 'Identity', 'Giảng viên');
 
 
--- Gửi email tài khoản và mật khẩu:
 CREATE TRIGGER after_user_insert
     AFTER INSERT ON Users
     FOR EACH ROW
@@ -99,48 +97,45 @@ BEGIN
 END;
 
 
--- Đăng nhập:
 SELECT * FROM Users
 WHERE email = 'user@gmail.com' AND password = '123';
 
 
--- Hiển thị danh sách lớp học của giảng viên:
+
 SELECT * FROM Classes
-WHERE teacher_id = 1;  -- Thay 1 bằng teacher_id của giảng viên
+WHERE teacher_id = 1;
 
 
--- Hiển thị danh sách học viên trong lớp:
+
 SELECT Students.student_id, Users.full_name, Users.email, Users.phone_number, Students.status
 FROM Students
          JOIN Users ON Students.user_id = Users.user_id
-WHERE Students.class_id = 1;  -- Thay 1 bằng class_id của lớp học
+WHERE Students.class_id = 1;
 
 
--- Hiển thị danh sách học viên theo trạng thái:
 SELECT Students.student_id, Users.full_name, Users.email, Users.phone_number, Students.status
 FROM Students
          JOIN Users ON Students.user_id = Users.user_id
-WHERE Students.class_id = 1 AND Students.status = 'Đang học';  -- Thay 1 bằng class_id của lớp học và 'Đang học' bằng trạng thái mong muốn
+WHERE Students.class_id = 1 AND Students.status = 'Đang học';
 
 
--- Xem chi tiết học viên trong lớp:
+
+
 SELECT Students.student_id, Users.full_name, Users.email, Users.date_of_birth, Users.address, Users.phone_number, Students.status
 FROM Students
          JOIN Users ON Students.user_id = Users.user_id
-WHERE Students.student_id = 1;  -- Thay 1 bằng student_id của học viên
+WHERE Students.student_id = 1;
 
 
--- Viết nhật ký hàng ngày cho lớp:
 INSERT INTO DailyLogs (teacher_id, class_id, log_date, content)
-VALUES (1, 1, CURDATE(), 'Nội dung nhật ký');  -- Thay 1 bằng teacher_id và class_id tương ứng
+VALUES (1, 1, CURDATE(), 'Nội dung nhật ký');
 
 
--- Viết nhật ký hàng ngày cho học viên trong lớp:
 INSERT INTO DailyLogs (teacher_id, class_id, student_id, log_date, content)
-VALUES (1, 1, 1, CURDATE(), 'Nội dung nhật ký');  -- Thay 1 bằng teacher_id, class_id và student_id tương ứng
+VALUES (1, 1, 1, CURDATE(), 'Nội dung nhật ký');
 
 
--- Gửi email đóng học phí:
+
 CREATE TRIGGER before_fee_due_date
     BEFORE INSERT ON FeeStatus
     FOR EACH ROW
@@ -158,29 +153,25 @@ END IF;
 END;
 
 
--- Xem tình trạng học phí và lịch sử:
+
 SELECT * FROM FeeStatus
-WHERE student_id = 1;  -- Thay 1 bằng student_id của học viên
+WHERE student_id = 1;
 
 
--- Xem điểm các bài kiểm tra:
 SELECT * FROM Grades
-WHERE student_id = 1;  -- Thay 1 bằng student_id của học viên
+WHERE student_id = 1;
 
 
--- Thay đổi điểm cho học viên:
 UPDATE Grades
 SET theoretical = 8.5, practical = 7.0
-WHERE student_id = 1 AND subject = 'Math';  -- Thay 1 bằng student_id của học viên và 'Math' bằng môn học tương ứng
+WHERE student_id = 1 AND subject = 'Math';
 
 
--- Chuyển trạng thái cho học viên:
 UPDATE Students
 SET status = 'Chờ chuyển lớp'
-WHERE student_id = 1;  -- Thay 1 bằng student_id của học viên
+WHERE student_id = 1;
 
 
--- Thống kê số lượng học viên của từng giảng viên:
 SELECT Users.user_id, Users.full_name, COUNT(Students.student_id) AS total_students
 FROM Users
          JOIN Classes ON Users.user_id = Classes.teacher_id
@@ -188,7 +179,6 @@ FROM Users
 GROUP BY Users.user_id, Users.full_name;
 
 
--- Xem điểm trung bình theo từng lớp:
 SELECT Classes.class_id, Classes.class_name, AVG(Grades.average) AS average_grade
 FROM Classes
          JOIN Students ON Classes.class_id = Students.class_id
@@ -196,7 +186,6 @@ FROM Classes
 GROUP BY Classes.class_id, Classes.class_name;
 
 
--- Lưu thông tin dữ liệu của giảng viên hàng tháng:
 CREATE TABLE MonthlyTeacherData (
                                     record_id INT PRIMARY KEY AUTO_INCREMENT,
                                     teacher_id INT,
@@ -205,6 +194,7 @@ CREATE TABLE MonthlyTeacherData (
                                     total_students INT,
                                     FOREIGN KEY (teacher_id) REFERENCES Users(user_id)
 );
+
 
 CREATE TRIGGER monthly_teacher_data
     AFTER INSERT ON Classes
@@ -219,11 +209,6 @@ BEGIN
 END;
 
 
--- Thêm môn học mới:
+
 INSERT INTO Subjects (subject_name)
-VALUES ('New Subject');  -- Thay 'New Subject' bằng tên môn học mới
-
-
-
-
-
+VALUES ('New Subject');

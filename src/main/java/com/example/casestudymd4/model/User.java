@@ -1,3 +1,4 @@
+
 package com.example.casestudymd4.model;
 
 import jakarta.persistence.*;
@@ -41,4 +42,3 @@ public class User {
 
 
 }
-

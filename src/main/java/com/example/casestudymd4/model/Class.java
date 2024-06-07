@@ -20,5 +20,4 @@ public class Class {
 
     @OneToMany(mappedBy = "classId")
     private Set<Student> students;
-
 }
