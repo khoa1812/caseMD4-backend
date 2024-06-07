@@ -23,7 +23,6 @@ public class FeeStatus {
     @Temporal(TemporalType.DATE)
     private Date dueDate;
 
-    //    @Enumerated(EnumType.STRING)
     private FeeStatusEnum status;
 
 }
