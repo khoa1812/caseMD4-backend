@@ -14,6 +14,7 @@ public class CasestudyMd4Application {
         SpringApplication.run(CasestudyMd4Application.class, args);
     }
 
+
     public void run(String... args) throws Exception {
         if (roleRepository.count() == 0) {
             Role admin = new Role("ROLE_ADMIN");
