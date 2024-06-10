@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/teacher")
+@RequestMapping("/teacher")
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
@@ -28,7 +28,7 @@ public class TeacherController {
 
     // 2. Xem danh sách học viên trong lớp
     @GetMapping("/classes/{classId}/students")
-    public ResponseEntity<List<Student>> getStudents(@PathVariable Long classId) {
+    public ResponseEntity<List<Student>> getStudents(@RequestBody @PathVariable Long classId) {
         List<Student> students = teacherService.getStudentsByClassId(classId);
         return ResponseEntity.ok(students);
     }

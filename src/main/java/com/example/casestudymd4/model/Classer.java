@@ -28,4 +28,3 @@ public class Classer {
     private User teacher;
 
 }
-
