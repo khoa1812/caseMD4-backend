@@ -1,3 +1,4 @@
+
 package com.example.casestudymd4.model;
 
 import jakarta.persistence.*;
@@ -25,7 +26,7 @@ public class EmailQueue {
     @Temporal(TemporalType.DATE)
     private Date sendDate;
 
-//    @Enumerated(EnumType.STRING)
+
     private EmailStatus status;
 
 }

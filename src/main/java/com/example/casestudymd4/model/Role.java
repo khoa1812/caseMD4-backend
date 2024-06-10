@@ -1,3 +1,4 @@
+
 package com.example.casestudymd4.model;
 
 import jakarta.persistence.Entity;
@@ -45,3 +46,4 @@ public class Role implements Serializable {
         this.name = name;
     }
 }
+
