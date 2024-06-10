@@ -17,9 +17,13 @@ public class CasestudyMd4Application {
     public void run(String... args) throws Exception {
         if (roleRepository.count() == 0) {
             Role admin = new Role("ROLE_ADMIN");
-            Role user = new Role("ROLE_USER");
+            Role ministr = new Role("ROLE_MINISTR");
+            Role student = new Role("ROLE_STUDENT");
+            Role teacher = new Role("ROLE_TEACHER");
             roleRepository.save(admin);
-            roleRepository.save(user);
+            roleRepository.save(student);
+            roleRepository.save(teacher);
+            roleRepository.save(ministr);
         }
     }
 

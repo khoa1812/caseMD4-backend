@@ -1,9 +1,11 @@
 package com.example.casestudymd4.service;
 
+import com.example.casestudymd4.model.DTO.TeacherStudentCountDTO;
 import com.example.casestudymd4.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService extends UserDetailsService {
@@ -24,4 +26,7 @@ public interface UserService extends UserDetailsService {
     boolean isRegister(User user);
 
     boolean isCorrectConfirmPassword(User user);
+
+
+    List<TeacherStudentCountDTO> countStudentsPerTeacher();
 }
