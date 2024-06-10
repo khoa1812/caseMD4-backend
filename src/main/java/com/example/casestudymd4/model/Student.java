@@ -1,4 +1,3 @@
-
 package com.example.casestudymd4.model;
 
 import jakarta.persistence.*;
@@ -13,13 +12,18 @@ public class Student {
     private Long studentId;
 
     @ManyToOne
+    @JoinColumn(name = "classer_id")
+    private Classer classer;
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "class_id")
-    private Class classId;
+    private Classer classId;
 
+    @Enumerated(EnumType.STRING)
     private StudentStatus status;
 
 }

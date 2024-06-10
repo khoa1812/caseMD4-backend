@@ -19,7 +19,7 @@ public class DailyLog {
 
     @ManyToOne
     @JoinColumn(name = "class_id")
-    private Class classId;
+    private Classer classId;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
