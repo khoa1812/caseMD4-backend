@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    Iterable<User> findByRolesIdNot(Long User);
 
     @Query("SELECT new com.example.casestudymd4.model.DTO.TeacherStudentCountDTO(t.id, t.fullName, COUNT(s)) " +
-            "FROM Class c JOIN c.teacher t JOIN c.students s " +
+            "FROM Classer c JOIN c.teacher t JOIN c.students s " +
             "GROUP BY t.id, t.fullName")
     List<TeacherStudentCountDTO> countStudentsPerTeacher();
 
