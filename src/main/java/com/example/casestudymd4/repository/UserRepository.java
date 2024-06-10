@@ -19,10 +19,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    Iterable<User> findByStatusAndRolesIdNot(String status, Long id);;
 //    Iterable<User>findByNameContainingAndUsernameContainingAndRolesIdNot(String name, String username, Long User);
 //    Iterable<User> findByRolesIdNot(Long User);
+@Query("SELECT new com.example.casestudymd4.model.DTO.TeacherStudentCountDTO(t.id, t.fullName, COUNT(s)) " +
+        "FROM Class c JOIN c.teacher t JOIN c.students s " +
+        "GROUP BY t.id, t.fullName")
+List<TeacherStudentCountDTO> countStudentsPerTeacher();
 
-    @Query("SELECT new com.example.casestudymd4.model.DTO.TeacherStudentCountDTO(t.id, t.fullName, COUNT(s)) " +
-            "FROM Class c JOIN c.teacher t JOIN c.students s " +
-            "GROUP BY t.id, t.fullName")
-    List<TeacherStudentCountDTO> countStudentsPerTeacher();
 
 }
