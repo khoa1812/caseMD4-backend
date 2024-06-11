@@ -11,15 +11,15 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classer_id")
     private Classer classer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
     private Classer classId;
 

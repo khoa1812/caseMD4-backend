@@ -17,13 +17,13 @@ public class Classer {
 
     private Long id;
 
-    @OneToMany(mappedBy = "classer")
+    @OneToMany(mappedBy = "classer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Student> students;
 
     @Column(nullable = false)
     private String className;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "teacher_id")
     private User teacher;
 

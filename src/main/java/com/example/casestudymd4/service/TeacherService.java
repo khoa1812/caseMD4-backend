@@ -54,4 +54,6 @@ public class TeacherService {
         dailyLog.setContent(dailyLogRequest.getContent());
         return dailyLogRepository.save(dailyLog);
     }
+
+
 }

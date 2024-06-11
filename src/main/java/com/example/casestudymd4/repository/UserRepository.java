@@ -4,7 +4,6 @@ import com.example.casestudymd4.model.DTO.TeacherStudentCountDTO;
 import com.example.casestudymd4.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    Iterable<User> findByRolesIdNot(Long User);
 
     @Query("SELECT new com.example.casestudymd4.model.DTO.TeacherStudentCountDTO(t.id, t.fullName, COUNT(s)) " +
-            "FROM Class c JOIN c.teacher t JOIN c.students s " +
+            "FROM Classer c JOIN c.teacher t JOIN c.students s " +
             "GROUP BY t.id, t.fullName")
     List<TeacherStudentCountDTO> countStudentsPerTeacher();
 
