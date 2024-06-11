@@ -32,7 +32,6 @@ public class SecurityConfig {
         return new UserServiceImpl();
     }
 
-
     @Autowired
     private UserService userService;
 
@@ -64,16 +63,17 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder(10);
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/login", "/register", "/**").permitAll()
-                        .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                        .requestMatchers("/teacher/**").hasAnyAuthority("ROLE_TEACHER")
-                )
+                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/teacher/**").hasAuthority("ROLE_TEACHER")
+                        .requestMatchers("/ministr/**").hasAuthority("ROLE_MINISTR")
+                        .requestMatchers("/student/**").hasAuthority("ROLE_STUDENT")
+                        .anyRequest().authenticated())
                 .exceptionHandling(customizer -> customizer.accessDeniedHandler(customAccessDeniedHandler()))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())
