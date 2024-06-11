@@ -2,6 +2,7 @@ package com.example.casestudymd4.service;
 
 import com.example.casestudymd4.model.Classer;
 import com.example.casestudymd4.model.DTO.DailyLogRequest;
+import com.example.casestudymd4.model.DTO.ListClassDTO;
 import com.example.casestudymd4.model.DailyLog;
 import com.example.casestudymd4.model.Student;
 import com.example.casestudymd4.model.StudentStatus;
@@ -23,9 +24,9 @@ public class TeacherService {
     @Autowired
     private DailyLogRepository dailyLogRepository;
 
-    public List<Classer> getClassesByTeacherId(Long teacherId) {
-        return classerRepository.findByTeacherId(teacherId);
-    }
+//    public List<Classer> getClassesByTeacherId(Long teacherId) {
+//        return classerRepository.findByTeacherId(teacherId);
+//    }
 
     public List<Student> getStudentsByClassId(Long classId) {
         return studentRepository.findByClasserId(classId);
@@ -53,5 +54,8 @@ public class TeacherService {
         dailyLog.setLogDate(new Date());
         dailyLog.setContent(dailyLogRequest.getContent());
         return dailyLogRepository.save(dailyLog);
+    }
+    public Iterable<ListClassDTO> findClassByTeacherId (Long classId) {
+        return classerRepository.findClassByTeacherId();
     }
 }

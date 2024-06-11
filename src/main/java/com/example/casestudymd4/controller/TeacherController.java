@@ -2,6 +2,7 @@ package com.example.casestudymd4.controller;
 
 import com.example.casestudymd4.model.Classer;
 import com.example.casestudymd4.model.DTO.DailyLogRequest;
+import com.example.casestudymd4.model.DTO.ListClassDTO;
 import com.example.casestudymd4.model.DailyLog;
 import com.example.casestudymd4.model.Student;
 import com.example.casestudymd4.model.StudentStatus;
@@ -21,14 +22,14 @@ public class TeacherController {
 
     // 1. Xem danh sách lớp học
     @GetMapping("/{teacherId}/classes")
-    public ResponseEntity<List<Classer>> getClasses(@RequestBody @PathVariable Long teacherId) {
-        List<Classer> classes = teacherService.getClassesByTeacherId(teacherId);
+    public ResponseEntity<Iterable<ListClassDTO>> getClasses(@RequestBody @PathVariable Long teacherId) {
+        Iterable<ListClassDTO> classes = teacherService.findClassByTeacherId(teacherId);
         return ResponseEntity.ok(classes);
     }
 
     // 2. Xem danh sách học viên trong lớp
     @GetMapping("/classes/{classId}/students")
-    public ResponseEntity<List<Student>> getStudents(@RequestBody @PathVariable Long classId) {
+    public ResponseEntity<List<Student>> getStudents(@PathVariable Long classId) {
         List<Student> students = teacherService.getStudentsByClassId(classId);
         return ResponseEntity.ok(students);
     }

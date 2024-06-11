@@ -19,9 +19,9 @@ public class Student {
     @JoinColumn(name = "user_id")
     private User user;
 
-//    @ManyToOne
-//    @JoinColumn(name = "class_id")
-//    private Classer classId;
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private Classer classId;
 
     @Enumerated(EnumType.STRING)
     private StudentStatus status;
