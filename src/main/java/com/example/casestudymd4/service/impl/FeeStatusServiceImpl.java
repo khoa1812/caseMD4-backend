@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FeeService implements FeeStatusService {
+public class FeeStatusServiceImpl implements FeeStatusService {
 
     @Override
     public List<FeeStatus> getFeeStatusByStudentId(Long studentId) {

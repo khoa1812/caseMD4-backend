@@ -18,5 +18,4 @@ public class GradeServiceImpl implements GradeService {
     public Iterable<Grade> getGradeByStudentId(Long studentId) {
         return gradeRepository.findGradeByStudentStudentId(studentId);
     }
-
 }
