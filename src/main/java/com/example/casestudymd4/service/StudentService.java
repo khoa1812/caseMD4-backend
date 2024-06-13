@@ -15,5 +15,7 @@ public interface StudentService {
 
     List<StudentDTO> findAllStudentsWithUser(Long studentId);
 
+    List<Student> getStudentByUid(Long id);
+
 }
 

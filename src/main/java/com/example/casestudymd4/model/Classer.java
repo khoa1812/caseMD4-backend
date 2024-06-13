@@ -1,6 +1,7 @@
 
 package com.example.casestudymd4.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class Classer {
     private Long id;
 
     @OneToMany(mappedBy = "classer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonIgnore
     private List<Student> students;
 
     @Column(nullable = false)

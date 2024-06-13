@@ -74,6 +74,8 @@ public class SecurityConfig {
                         .requestMatchers("/teacher/**").hasAuthority("ROLE_TEACHER")
                         .requestMatchers("/ministr/**").hasAuthority("ROLE_MINISTR")
                         .requestMatchers("/student/**").hasAuthority("ROLE_STUDENT")
+                        .requestMatchers("/api/student/**").permitAll()
+
                         .anyRequest().authenticated())
                 .exceptionHandling(customizer -> customizer.accessDeniedHandler(customAccessDeniedHandler()))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

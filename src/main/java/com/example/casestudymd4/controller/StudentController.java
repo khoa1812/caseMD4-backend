@@ -72,6 +72,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/student")
 public class StudentController {
 
@@ -104,8 +105,8 @@ public class StudentController {
 
     // Lấy thông tin sinh viên theo ID sinh viên
     @GetMapping("/{studentId}")
-    public List<StudentDTO> getStudentByUser(@PathVariable Long studentId) {
-        return studentService.findAllStudentsWithUser(studentId);
+    public List<Student> getStudentByUser(@PathVariable Long studentId) {
+        return studentService.getStudentByUid(studentId);
     }
 
     // Lấy điểm của sinh viên theo ID sinh viên

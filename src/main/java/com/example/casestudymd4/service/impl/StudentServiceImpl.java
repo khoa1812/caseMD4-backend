@@ -33,7 +33,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> findAllStudentsWithUser(Long studentId) {
-        return studentRepository.findAllStudentsWithUser();
+//        return studentRepository.findAllStudentsWithUser(studentId);
+        return null;
+    }
+
+    @Override
+    public List<Student> getStudentByUid(Long id) {
+        return studentRepository.findAllByUserId(id);
     }
 
 
