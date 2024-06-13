@@ -15,16 +15,8 @@ public class GradeServiceImpl implements GradeService {
     private GradeRepository gradeRepository;
 
     @Override
-    public List<Grade> getGradeByStudentId(Long studentId) {
-        return null;
+    public Iterable<Grade> getGradeByStudentId(Long studentId) {
+        return gradeRepository.findGradeByStudentStudentId(studentId);
     }
 
-    public GradeRepository getGradeRepository() {
-        return gradeRepository;
-    }
-
-    public void setGradeRepository(GradeRepository gradeRepository) {
-        this.gradeRepository = gradeRepository;
-    }
 }
-
